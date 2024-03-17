@@ -1,0 +1,64 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid green;
+}
+.logo{
+  width: 110px;
+}
+.nav-items{
+  border: 2px solid yellow;
+}
+.nav-items > ul{
+  font-size: 20px;
+   display: flex;
+   border: 1px solid blue;
+}
+
+.nav-items > ul > li{
+  padding: 10px;
+  margin: 3px;
+  list-style: none;
+}
+.res-card{
+  padding: 6px;
+  margin: 6px;
+  /* border:3px solid; */
+  width: 243px;
+  height: 450px;
+}
+.res-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.res-logo{
+  width: 100%;
+}
+.filter-btn{
+  background-color: blue;
+}
+.shimmer-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.shimmer-cards{
+  margin: 20px;
+  width: 300px;
+  height: 400px;
+  background-color:#f0f0f0 ;
+}
+.btn{
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  background-color: green;
+}
+.user-card{
+  padding: 10px;
+  border: 2px solid salmon;
+}
