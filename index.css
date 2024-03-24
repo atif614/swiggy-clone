@@ -46,3 +46,22 @@
   /* align-items: center; */
   justify-content: center;
 }
+.filter-btn{
+  background-color: darkolivegreen;
+  margin-top: 8px;
+  padding: 5px 9px;
+  color: cornsilk;
+  border-radius: 21px;
+  border: none;
+  cursor: pointer;
+}
+.login-btn{
+  cursor: pointer;
+}
+.filter{
+  display: flex;
+  justify-content: space-between;
+}
+.search{
+  margin-top: 7px;
+}
