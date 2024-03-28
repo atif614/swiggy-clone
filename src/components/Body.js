@@ -18,10 +18,9 @@ export const Body = () => {
         getData();
     }, [])
     async function getData() {
-        console.log("API Chala");
         const result = await fetch(API_URL);
         const data = await result.json();
-        // console.log(data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+        console.log(data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         setResData(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredData(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
@@ -55,9 +54,8 @@ export const Body = () => {
     }
     return (
         <div className="body">
-            {console.log("Render Hua")}
             <div className="filter">
-                <div className="searchText">
+                <div className="search">
                     <input type="text" className="searchText-box" value={searchText} onChange={(e)=>setsearchText(e.target.value)} />
                     <button onClick={searchTextRestaurant}>search</button> 
                 </div>
@@ -66,7 +64,7 @@ export const Body = () => {
             <div className="res-container">
                 {
                     filteredData.map((res) => {
-                        return <RestaurantCard key={res.info.id} resName={res.info.name} cusines={res.info.cuisines} rating={res.info.avgRating} cloudinaryImageId={res.info.cloudinaryImageId} />
+                        return <RestaurantCard resId={res.info.id} key={res.info.id} resName={res.info.name} cusines={res.info.cuisines} rating={res.info.avgRating} cloudinaryImageId={res.info.cloudinaryImageId} />
                     })
                 }
             </div>
