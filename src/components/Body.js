@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { API_URL } from "../../utils/constant";
 import RestaurantCard from "./RestaurantCard";
 import React, { useState,useEffect, CSSProperties } from "react";
@@ -64,7 +65,7 @@ export const Body = () => {
             <div className="res-container">
                 {
                     filteredData.map((res) => {
-                        return <RestaurantCard resId={res.info.id} key={res.info.id} resName={res.info.name} cusines={res.info.cuisines} rating={res.info.avgRating} cloudinaryImageId={res.info.cloudinaryImageId} />
+                        return <Link to={"/restaurant/"+res.info.id} ><RestaurantCard resId={res.info.id} resName={res.info.name} cusines={res.info.cuisines} rating={res.info.avgRating} cloudinaryImageId={res.info.cloudinaryImageId} /></Link>
                     })
                 }
             </div>
