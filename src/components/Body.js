@@ -3,7 +3,7 @@ import { API_URL } from "../../utils/constant";
 import RestaurantCard from "./RestaurantCard";
 import React, { useState,useEffect, CSSProperties } from "react";
 import { ClipLoader } from "react-spinners";
-
+import useOnlineStatus from "../../utils/useOnlineStatus";
 export const Body = () => {
     const override = {
         display: "block",
@@ -44,6 +44,7 @@ export const Body = () => {
         data-testid="loader"
       />
     }
+
     function searchTextRestaurant(){
         console.log(searchText);
         const searchTextedRestaurant = resData.filter((res)=>{
@@ -53,6 +54,11 @@ export const Body = () => {
         console.log(searchTextedRestaurant);
         setFilteredData(searchTextedRestaurant);
     }
+     const onlineStatus = useOnlineStatus();
+     if(onlineStatus===false){
+        return <h1>Not Connected on Internet</h1>
+     }
+
     return (
         <div className="body">
             <div className="filter">
@@ -65,7 +71,7 @@ export const Body = () => {
             <div className="res-container">
                 {
                     filteredData.map((res) => {
-                        return <Link to={"/restaurant/"+res.info.id} ><RestaurantCard resId={res.info.id} resName={res.info.name} cusines={res.info.cuisines} rating={res.info.avgRating} cloudinaryImageId={res.info.cloudinaryImageId} /></Link>
+                        return <Link to={"/restaurant/"+res.info.id}  key={res.info.id} ><RestaurantCard resId={res.info.id} resName={res.info.name} cusines={res.info.cuisines} rating={res.info.avgRating} cloudinaryImageId={res.info.cloudinaryImageId} /></Link>
                     })
                 }
             </div>

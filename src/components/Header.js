@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LOGO_URL } from "../../utils/constant";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 
 const Header = () => {
   let counter = 0;
@@ -10,6 +11,7 @@ const Header = () => {
     //  console.log("UseEffect");
    },[])
   //  console.log("Header 2"); 
+   const onlineStatus = useOnlineStatus();
     return (
       <div className="header">
         <div className="logo-container">
@@ -17,6 +19,7 @@ const Header = () => {
         </div>
         <div className="nav-items">
           <ul>
+            <li>Status : {onlineStatus ? "✔":"😡"}</li>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>

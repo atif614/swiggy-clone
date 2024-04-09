@@ -1,21 +1,26 @@
 import React, {useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { MENU_URL } from "../../utils/constant";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 
 const RestaurantMenu = ()=>{
-    const [resInfo,setResInfo] = useState(null);
+   //  const [resInfo,setResInfo] = useState(null);
     const {resId} = useParams();
-    console.log(resId);
-    useEffect(()=>{
-       fetchMenu();  
-    },[])
 
-    const fetchMenu = async ()=>{
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.27060&lng=85.83340&restaurantId="+resId+"&catalog_qa=undefined&submitAction=ENTER");
-        const json = await data.json();
-        console.log(json);
-        setResInfo(json.data);
-    } 
+    const resInfo = useRestaurantMenu(resId);
+    console.log(resInfo);
+
+   //   useEffect(()=>{
+   //     fetchMenu();  
+   //  },[])
+
+   //  const fetchMenu = async ()=>{
+      //   const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.27060&lng=85.83340&restaurantId="+resId+"&catalog_qa=undefined&submitAction=ENTER");
+      //   const json = await data.json();
+      //   console.log(json);
+      //   setResInfo(json.data);
+   //  } 
+     
      if(resInfo===null){
         return "Wait........"
      }
@@ -28,7 +33,7 @@ const RestaurantMenu = ()=>{
             <h2>{cuisines.join(",")}</h2>
             <h2>{costForTwo/100}</h2> 
           {itemCards.map((item)=> {
-             return <li key={item.card.info.id}>{item.card.info.category} - Rs {item.card.info.defaultPrice}</li>
+             return <li key={item.card.info.id}>{item.card.info.category} - Rs {item.card.info.defaultPrice || item.card.info.price}</li>
           } )}
         </div>
     )
