@@ -29,8 +29,9 @@ export const Body = () => {
 
     function filterRestaurant(){
         const filter = resData.filter((item) => item.info.avgRating > 4.2 );
-    //     console.log(filter);
-    //     setResData(filter);
+        console.log(filter);
+        // setResData(filter);
+        setFilteredData(filter)
     }
     if(resData.length===null){
         // const heading = <h1 style={{textAlign:"center"}}>Wait ..............</h1>
@@ -61,14 +62,16 @@ export const Body = () => {
 
     return (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text" className="searchText-box" value={searchText} onChange={(e)=>setsearchText(e.target.value)} />
-                    <button onClick={searchTextRestaurant}>search</button> 
+            <div className="filter flex">
+                <div className="search m-4 p-4">
+                    <input type="text" className="border border-solid border-black" value={searchText} onChange={(e)=>setsearchText(e.target.value)} />
+                    <button className="px-4 py-1 bg-green-100 m-4 rounded-lg" onClick={searchTextRestaurant}>search</button> 
                 </div>
-                <button className="filter-btn" onClick={filterRestaurant}>Top Rated Restaurant</button>
+                <div className="flex items-center">
+                <button className="filter-btn px-4 py-1 bg-green-100" onClick={filterRestaurant}>Top Rated Restaurant</button>
+                </div>
             </div>
-            <div className="res-container">
+            <div className="res-container flex flex-wrap items-center justify-center">
                 {
                     filteredData.map((res) => {
                         return <Link to={"/restaurant/"+res.info.id}  key={res.info.id} ><RestaurantCard resId={res.info.id} resName={res.info.name} cusines={res.info.cuisines} rating={res.info.avgRating} cloudinaryImageId={res.info.cloudinaryImageId} /></Link>

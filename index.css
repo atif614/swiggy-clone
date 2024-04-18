@@ -1,4 +1,8 @@
-.header {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .header {
   display: flex;
   justify-content: space-between;
   border: 2px solid cadetblue;
@@ -10,7 +14,7 @@
 }
 .nav-items ul{
   display: flex;
-  /* border: 2px solid blue; */
+  border: 2px solid blue;
   padding: 0 20px;
 }
 
@@ -19,18 +23,17 @@
   list-style: none;
 }
 
-/* restaurant card */
 
 .res-card{
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   padding: 10px;
   width: 250px;
   margin: 10px 10px;
 }
 
 .res-card:hover{
-  /* width: 200px; */
-  /* height: 200px; */
+  width: 200px;
+  height: 200px;
   border: 1px solid blue;
   cursor: pointer;
 }
@@ -43,7 +46,7 @@
 .res-container{
   display: flex;
   flex-wrap: wrap;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
 }
 .filter-btn{
@@ -66,3 +69,4 @@
   margin-top: 7px;
 }
 
+ */
