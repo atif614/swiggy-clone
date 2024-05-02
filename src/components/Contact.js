@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Contact = ()=>{
-    const [todo,setTodo]=useState({});
-    useEffect(()=>{
-      getData();
-      console.log("useEffect");
-    },[])
-
-    async function getData(){
-        const data = await fetch("https://jsonplaceholder.typicode.com/todos");
-        const json = await data.json();
-        console.log(json[0]);
-        setTodo(json)
-    }
-    console.log(todo[0]);
-    console.log("Render");
+    
     return  (
-        <div>
-            {/* {console.log(todo)} */}
-            {/* {todo.map((item)=> <h3 key={item.id}>{item.title}</h3> )} */}
-            <h3>{todo.title}</h3>
+        <div className="m-4">
+          {/* <Counter/>  
+          <Counter/>  
+          <Counter/>  
+          <Counter/>   */}
+          <HOCRed cmp={Counter} />
         </div>
     )
 }
 
 export default Contact;
+
+function HOCRed(props){
+    return <h1 className="bg-green-500">{props.cmp}</h1>;
+}
+ 
+function Counter(){
+    const[count,setCount]=useState(0);
+    return(
+        <div className="bg-red-400">
+        <div>{count}</div>
+        <button className="ml-3 bg-green-100" onClick={()=>setCount(count+1)}>update</button>
+        </div>
+    )
+}

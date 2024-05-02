@@ -21,10 +21,10 @@ export const Body = () => {
     async function getData() {
         const result = await fetch(API_URL);
         const data = await result.json();
-        console.log(data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         setResData(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredData(data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
+    console.log(resData);
     // console.log(resData);
 
     function filterRestaurant(){
