@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ title, length, item }) => {
-  const [showItem,setShowItems] = useState(false);
-  console.log(item);
+const RestaurantCategory = ({ title, length, item,showItem,showIndex,dummyData }) => {
+  console.log(showItem)
+  // const [showItem,setShowItems] = useState(false);
+  // console.log(item);
   const handleClick = ()=>{
-    setShowItems(!showItem)
+    // setShowItems(!showItem)
+    showIndex();
+    console.log(showItem);
   }
   return (
     <div>
@@ -15,7 +18,7 @@ const RestaurantCategory = ({ title, length, item }) => {
           <span className="font-bold text-lg">{title} ({length})</span>
           <span>🔽</span>
         </div>
-         { showItem &&  <ItemList items={item} />}
+         { showItem &&  <ItemList items={item} dummyData={dummyData} />}
       </div>
       {/* Accordian Body */}
     </div>

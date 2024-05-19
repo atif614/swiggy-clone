@@ -9,7 +9,10 @@ const RestaurantMenu = () => {
    const { resId } = useParams();
 
    const resInfo = useRestaurantMenu(resId);
-   console.log(resInfo);
+   const [showIndex,setShowIndex] = useState(null);
+   console.log(showIndex);
+   const dummyData = "dummydata";
+   console.log("Data in Parent",dummyData);
 
    //   useEffect(()=>{
    //     fetchMenu();  
@@ -26,12 +29,12 @@ const RestaurantMenu = () => {
       return "Wait........"
    }
    const { itemCards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[2].card.card;
-   console.log(itemCards);
-   console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards);
+   // console.log(itemCards);
+   // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards);
    const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards.filter((item) => {
       return item?.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
    })
-   console.log(categories);
+   // console.log(categories);
    const { name, cuisines, costForTwo, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
    return (
       <div className="text-center">
@@ -43,7 +46,7 @@ const RestaurantMenu = () => {
              return <li key={item.card.info.id}>{item.card.info.category} - Rs {item.card.info.defaultPrice || item.card.info.price}</li>
           } )} */}
          {/* Categories */}
-         {categories.map((category) => <RestaurantCategory title={category.card.card.title} length={category.card.card.itemCards.length} item={category.card.card.itemCards} />)}
+         {categories.map((category, index) => <RestaurantCategory key={index} title={category.card.card.title} length={category.card.card.itemCards.length} item={category.card.card.itemCards} showItem={index === showIndex && true} showIndex={()=> setShowIndex(index)} dummyData={dummyData} />)}
       </div>
    )
 }

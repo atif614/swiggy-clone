@@ -1,8 +1,17 @@
 import React from "react";
 import { IMG_URL } from "../../utils/constant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../utils/cartSlice";
 
-const ItemList = ({ items }) => {
-    console.log(items);
+
+const ItemList = ({ items ,dummyData}) => {
+const dispatch = useDispatch();
+function handleAddItem(item){
+    // Dispatch
+    dispatch(addItem(item))
+}
+    // console.log(items);
+    console.log("Data in Child",dummyData);
     return (
         <div>
             {items.map((item) => (
@@ -20,7 +29,7 @@ const ItemList = ({ items }) => {
                         <img src={IMG_URL + item.card.info.imageId} className="w-full" />
                         {/* <h1> {item.card.info.imageId} </h1> */}
                         <div className="relative top-0">
-                            <button className="p-2 bg-slate-800  rounded-lg ml-3 w-24 shadow-lg m-auto">Add +</button>
+                            <button className="p-2 bg-slate-800  rounded-lg ml-3 w-24 shadow-lg m-auto" onClick={()=>handleAddItem(item)}>Add +</button>
                         </div>
                     </div>
                 </div>
