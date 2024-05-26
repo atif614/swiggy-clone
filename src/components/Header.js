@@ -28,7 +28,7 @@ const Header = () => {
             <li className="px-2"><Link to="/">Home</Link></li>
             <li className="px-2"><Link to="/about">About Us</Link></li>
             <li className="px-2"><Link to="/contact">Contact Us</Link></li>
-            <li className="px-2"><Link to="/about">Cart({cart.length})</Link></li>
+            <li className="px-2"><Link to="/cart">Cart({cart.length})</Link></li>
             {/* <button onClick={()=>setCount(count+1)}>Count Increase</button> */}
             <li className="px-2"><Link to="/about">{loggedInUser}</Link></li>
           </ul>

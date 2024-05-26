@@ -4,7 +4,7 @@ import ItemList from "./ItemList";
 const RestaurantCategory = ({ title, length, item,showItem,showIndex,dummyData }) => {
   console.log(showItem)
   // const [showItem,setShowItems] = useState(false);
-  // console.log(item);
+  console.log(item);
   const handleClick = ()=>{
     // setShowItems(!showItem)
     showIndex();
